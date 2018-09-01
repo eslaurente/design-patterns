@@ -6,6 +6,16 @@ public class Point {
         CARTESIAN
     }
 
+    static class Factory {
+        public static Point newCartesianPoint(double x, double y) {
+            return new Point(x, y, CoordinateSystem.CARTESIAN);
+        }
+
+        public static Point newPolarPoint(double rho, double theta) {
+            return new Point(rho * Math.cos(theta), rho * Math.sin(theta), CoordinateSystem.POLAR);
+        }
+    }
+
     private CoordinateSystem coordinateSystem;
 
     public double getX() {
@@ -32,13 +42,6 @@ public class Point {
         this.coordinateSystem = coordinateSystem;
     }
 
-    public static Point newCartesianPoint(double x, double y) {
-        return new Point(x, y, CoordinateSystem.CARTESIAN);
-    }
-
-    public static Point newPolarPoint(double rho, double theta) {
-        return new Point(rho * Math.cos(theta), rho * Math.sin(theta), CoordinateSystem.POLAR);
-    }
 
     @Override
     public String toString() {
