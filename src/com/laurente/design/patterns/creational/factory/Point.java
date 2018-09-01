@@ -1,11 +1,13 @@
 package com.laurente.design.patterns.creational.factory;
 
-enum CoordinateSystem {
-    CARTESIAN,
-    POLAR
-}
-
 public class Point {
+    enum CoordinateSystem {
+        POLAR,
+        CARTESIAN
+    }
+
+    private CoordinateSystem coordinateSystem;
+
     public double getX() {
         return x;
     }
@@ -24,24 +26,23 @@ public class Point {
 
     private double x, y;
 
-    /**
-     *  BAD: Have to document what underlying args are and switch based on a type
-     * @param a
-     * @param b
-     * @param coordinateSystem
-     */
-    public Point(double a, double b, CoordinateSystem coordinateSystem) {
-        switch (coordinateSystem) {
-            case CARTESIAN:
-                this.x = a;
-                this.y = b;
-                break;
-            case POLAR:
-                this.x = a * Math.cos(b);
-                this.y = a * Math.sin(b);
-                break;
-            default:
-                break;
-        }
+    private Point(double x, double y, CoordinateSystem coordinateSystem) {
+        this.x = x;
+        this.y = y;
+        this.coordinateSystem = coordinateSystem;
+    }
+
+    public static Point newCartesianPoint(double x, double y) {
+        return new Point(x, y, CoordinateSystem.CARTESIAN);
+    }
+
+    public static Point newPolarPoint(double rho, double theta) {
+        return new Point(rho * Math.cos(theta), rho * Math.sin(theta), CoordinateSystem.POLAR);
+    }
+
+    @Override
+    public String toString() {
+        boolean isCartesian = this.coordinateSystem.equals(CoordinateSystem.CARTESIAN);
+        return String.format("Point {\n  %s = %s,\n  %s = %s\n}", isCartesian ? "x" : "rho", x, isCartesian ? "y" : "theta", y);
     }
 }
