@@ -1,7 +1,6 @@
 package com.laurente.design.patterns.creational.singleton;
 
 import java.io.*;
-import java.nio.file.Paths;
 
 public class SingletonDemo {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
