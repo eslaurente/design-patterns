@@ -44,7 +44,18 @@ public class SingletonDemo {
         EnumBasedSingleton enumBasedSingleton2 = (EnumBasedSingleton) readFromFile(enumFileName);
         System.out.println();
 //        System.out.println("'enumBasedSingleton1' == 'enumBasedSingleton2: " + (enumBasedSingleton1 == enumBasedSingleton2) + " | enumBasedSingleton1.getValue(): " + enumBasedSingleton1.getValue() + " | enumBasedSingleton2.getValue(): " + enumBasedSingleton2.getValue() + "'");
-        System.out.println(enumBasedSingleton2.getValue() == 42); // Should be 1024!
+        System.out.println("enumBasedSingleton2.getValue() == 42: " + (enumBasedSingleton2.getValue() == 42)); // Should be 1024!
+        System.out.println();
+
+        System.out.println("** Mono State Singleton **");
+        MonoStateSingleton chiefExecutiveOfficer = new MonoStateSingleton();
+        chiefExecutiveOfficer.setName("Emerald Laurente");
+        chiefExecutiveOfficer.setAge(29);
+
+        MonoStateSingleton anotherCeo = new MonoStateSingleton();
+        anotherCeo.setName("Andrew Grimes");
+        anotherCeo.setAge(28);
+        System.out.println("chiefExecutiveOfficer.getName().equals(anotherCeo.getName()): " + chiefExecutiveOfficer.getName().equals(anotherCeo.getName()));
 
     }
 
