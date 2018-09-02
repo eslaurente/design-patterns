@@ -26,7 +26,7 @@ public class SingletonDemo {
         System.out.println(output);
         System.out.println();
 
-        System.out.println("** Lazy Singleton **");
+        System.out.println("** Lazy Singleton - threadsafe **");
         LazySingleton lazySingleton1 = LazySingleton.getInstance();
         LazySingleton lazySingleton2 = LazySingleton.getInstance();
 
