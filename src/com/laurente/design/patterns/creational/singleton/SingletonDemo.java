@@ -21,7 +21,7 @@ public class SingletonDemo {
         saveToFile(singletonToFile, fileName);
 
         singleton.setValue(222);
-        BasicSingleton singletonFromFile = readFromFile(fileName);
+        BasicSingleton singletonFromFile = (BasicSingleton) readFromFile(fileName);
         String output = String.format("'singletonToFile' == 'singletonFromFile: %s | singletonToFile.getValue(): %d | singletonFromFile.getValue(): %s'", singletonToFile == singletonFromFile, singletonToFile.getValue(), singletonFromFile.getValue());
         System.out.println(output);
         System.out.println();
@@ -34,19 +34,32 @@ public class SingletonDemo {
         System.out.println("** Inner Static Singleton - inherently threadsafe **");
         InnerStaticSingleton innerStaticSingleton1= InnerStaticSingleton.getInstance();
         InnerStaticSingleton innerStaticSingleton2 = InnerStaticSingleton.getInstance();
+        System.out.println();
+
+        System.out.println("** Enum Based Singleton **");
+        String enumFileName = "enumBasedSingleton.bin";
+//        EnumBasedSingleton enumBasedSingleton1 = EnumBasedSingleton.INSTANCE;
+//        enumBasedSingleton1.setValue(1024);
+//        saveToFile(enumBasedSingleton1, enumFileName);
+
+        EnumBasedSingleton enumBasedSingleton2 = (EnumBasedSingleton) readFromFile(enumFileName);
+//        String enumBasedOutput = String.format("'enumBasedSingleton1' == 'enumBasedSingleton2: %s | enumBasedSingleton1.getValue(): %d | enumBasedSingleton2.getValue(): %s'", enumBasedSingleton1 == enumBasedSingleton2, enumBasedSingleton1.getValue(), enumBasedSingleton2.getValue());
+//        System.out.println(enumBasedOutput);
+        System.out.println(enumBasedSingleton2.getValue() == 42); // Should be 1024!
+
     }
 
-    public static void saveToFile(BasicSingleton singleton, String fileName) throws IOException {
+    public static void saveToFile(Object singleton, String fileName) throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream(fileName);
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(singleton);
         }
     }
 
-    public static BasicSingleton readFromFile(String fileName) throws IOException, ClassNotFoundException {
+    public static Object readFromFile(String fileName) throws IOException, ClassNotFoundException {
         try (FileInputStream fileIn = new FileInputStream(fileName);
              ObjectInputStream in = new ObjectInputStream(fileIn)) {
-            return (BasicSingleton) in.readObject();
+            return in.readObject();
         }
     }
 }
