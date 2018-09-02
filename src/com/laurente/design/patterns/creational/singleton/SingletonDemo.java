@@ -29,7 +29,11 @@ public class SingletonDemo {
         System.out.println("** Lazy Singleton - threadsafe **");
         LazySingleton lazySingleton1 = LazySingleton.getInstance();
         LazySingleton lazySingleton2 = LazySingleton.getInstance();
+        System.out.println();
 
+        System.out.println("** Inner Static Singleton - inherently threadsafe **");
+        InnerStaticSingleton innerStaticSingleton1= InnerStaticSingleton.getInstance();
+        InnerStaticSingleton innerStaticSingleton2 = InnerStaticSingleton.getInstance();
     }
 
     public static void saveToFile(BasicSingleton singleton, String fileName) throws IOException {
