@@ -6,7 +6,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Employee{" +
                 "name='" + name + '\'' +
                 ", position='" + position + '\'' +
                 '}';

@@ -1,24 +1,24 @@
 package com.laurente.design.patterns.creational.prototype;
 
-public class Address implements Cloneable {
-    public String streetName;
-    public int houseNumber;
+public class Address {
+    public String streetAddress, city, country;
 
-    public Address(String streetName, int houseNumber) {
-        this.streetName = streetName;
-        this.houseNumber = houseNumber;
+    public Address(String streetAddress, String city, String country) {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.country = country;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return new Address(streetName, houseNumber);
+    public Address(Address address) {
+        this(address.streetAddress, address.city, address.country);
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "streetName='" + streetName + '\'' +
-                ", houseNumber=" + houseNumber +
+                "streetAddress='" + streetAddress + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
                 '}';
     }
 }

@@ -7,7 +7,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Employee{" +
                 "streetAddress='" + streetAddress + '\'' +
                 ", postCode ='" + postCode + '\'' +
                 ", city='" + city + '\'' +
