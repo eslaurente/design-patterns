@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SingletonDatabase {
+public class SingletonDatabase implements Database {
     private Map<String, Integer> capitalCities = new HashMap<>();
     private static final SingletonDatabase INSTANCE = new SingletonDatabase();
     private static int instanceCount = 0;
