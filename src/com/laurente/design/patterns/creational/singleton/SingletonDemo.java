@@ -22,8 +22,7 @@ public class SingletonDemo {
 
         singleton.setValue(222);
         BasicSingleton singletonFromFile = (BasicSingleton) readFromFile(fileName);
-        String output = String.format("'singletonToFile' == 'singletonFromFile: %s | singletonToFile.getValue(): %d | singletonFromFile.getValue(): %s'", singletonToFile == singletonFromFile, singletonToFile.getValue(), singletonFromFile.getValue());
-        System.out.println(output);
+        System.out.println("'singletonToFile' == 'singletonFromFile: " + (singletonToFile == singletonFromFile) + " | singletonToFile.getValue(): " + singletonToFile.getValue() + " | singletonFromFile.getValue(): " + singletonFromFile.getValue() + "'");
         System.out.println();
 
         System.out.println("** Lazy Singleton - threadsafe **");
@@ -43,8 +42,8 @@ public class SingletonDemo {
 //        saveToFile(enumBasedSingleton1, enumFileName);
 
         EnumBasedSingleton enumBasedSingleton2 = (EnumBasedSingleton) readFromFile(enumFileName);
-//        String enumBasedOutput = String.format("'enumBasedSingleton1' == 'enumBasedSingleton2: %s | enumBasedSingleton1.getValue(): %d | enumBasedSingleton2.getValue(): %s'", enumBasedSingleton1 == enumBasedSingleton2, enumBasedSingleton1.getValue(), enumBasedSingleton2.getValue());
-//        System.out.println(enumBasedOutput);
+        System.out.println();
+//        System.out.println("'enumBasedSingleton1' == 'enumBasedSingleton2: " + (enumBasedSingleton1 == enumBasedSingleton2) + " | enumBasedSingleton1.getValue(): " + enumBasedSingleton1.getValue() + " | enumBasedSingleton2.getValue(): " + enumBasedSingleton2.getValue() + "'");
         System.out.println(enumBasedSingleton2.getValue() == 42); // Should be 1024!
 
     }
