@@ -4,7 +4,7 @@ import java.io.*;
 
 public class SingletonDemo {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        // ** Singleton **
+        System.out.println("** Singleton **");
         BasicSingleton singleton = BasicSingleton.getInstance();
         singleton.setValue(123);
         System.out.println(singleton.getValue());
@@ -14,7 +14,7 @@ public class SingletonDemo {
         // 1. Reflection - you can bypass private constructor using Reflection
         // 2. Serialization - clone object regardless of private constructor
 
-        // Serializing singleton:
+        System.out.println("** Serializing singleton **");
         BasicSingleton singletonToFile = BasicSingleton.getInstance();
         singletonToFile.setValue(111);
         String fileName = "singleton.bin";
@@ -24,6 +24,12 @@ public class SingletonDemo {
         BasicSingleton singletonFromFile = readFromFile(fileName);
         String output = String.format("'singletonToFile' == 'singletonFromFile: %s | singletonToFile.getValue(): %d | singletonFromFile.getValue(): %s'", singletonToFile == singletonFromFile, singletonToFile.getValue(), singletonFromFile.getValue());
         System.out.println(output);
+        System.out.println();
+
+        System.out.println("** Lazy Singleton **");
+        LazySingleton lazySingleton1 = LazySingleton.getInstance();
+        LazySingleton lazySingleton2 = LazySingleton.getInstance();
+
     }
 
     public static void saveToFile(BasicSingleton singleton, String fileName) throws IOException {
