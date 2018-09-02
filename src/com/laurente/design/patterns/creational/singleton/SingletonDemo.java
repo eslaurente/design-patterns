@@ -17,7 +17,7 @@ public class SingletonDemo {
         System.out.println("** Serializing singleton **");
         BasicSingleton singletonToFile = BasicSingleton.getInstance();
         singletonToFile.setValue(111);
-        String fileName = "singleton.bin";
+        String fileName = "assets/singleton.bin";
         saveToFile(singletonToFile, fileName);
 
         singleton.setValue(222);
@@ -36,7 +36,7 @@ public class SingletonDemo {
         System.out.println();
 
         System.out.println("** Enum Based Singleton **");
-        String enumFileName = "enumBasedSingleton.bin";
+        String enumFileName = "assets/enumBasedSingleton.bin";
 //        EnumBasedSingleton enumBasedSingleton1 = EnumBasedSingleton.INSTANCE;
 //        enumBasedSingleton1.setValue(1024);
 //        saveToFile(enumBasedSingleton1, enumFileName);
