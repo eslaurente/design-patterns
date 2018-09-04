@@ -26,10 +26,10 @@ public class CompositeDemo {
         NeuronLayer layer2 = new NeuronLayer();
 
         neuron1.connectTo(neuron2);
-//        Implementation of the following does not make sense:
-//        neuron1.connectTo(layer1);
-//        layer1.connectTo(neuron1);
-//        layer2.connectTo(neuron2);
+        // Implementation of the following does not make sense:
+        neuron1.connectTo(layer1);
+        layer1.connectTo(neuron1);
+        layer2.connectTo(neuron2);
 
     }
 }
